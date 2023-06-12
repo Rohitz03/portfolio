@@ -8,6 +8,7 @@ import {
   AiOutlineBuild,
   AiOutlineMail,
 } from "react-icons/ai";
+import Logo from "../assets/white-logo.png";
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
@@ -21,40 +22,53 @@ const NavBar = () => {
     {
       id: 2,
       link: "about",
-      icon: <AiOutlineUser/>,
+      icon: <AiOutlineUser />,
     },
     {
       id: 3,
       link: "portfolio",
-      icon: <AiOutlineFundProjectionScreen/>,
+      icon: <AiOutlineFundProjectionScreen />,
     },
     {
       id: 4,
       link: "experience",
-      icon: <AiOutlineBuild/>,
+      icon: <AiOutlineBuild />,
     },
     {
       id: 5,
       link: "contact",
-      icon: <AiOutlineMail/>
+      icon: <AiOutlineMail />,
     },
   ];
 
   return (
     <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-black fixed">
       <div className="flex items-center">
-        <h1 className="text-5xl font-signature ml-2">Rohit</h1>
+        <img
+          src={Logo}
+          alt="Logo"
+          style={{ width: "auto", height: "50px" }}
+          className="mr-2 pl-2 w-8 h-8"
+        />
       </div>
 
-      <ul className="hidden md:flex ml-auto"> 
+      <ul className="flex justify-center flex-grow">
         {links.map(({ id, link, icon }) => (
           <li
             key={id}
-            className="px-4 cursor-pointer capitalize font-medium text-white hover:scale-110 duration-300 flex items-center"
+            className="px-4 hover:scale-110 cursor-pointer capitalize font-medium text-white hover:bg-white hover:bg-opacity-10 hover:rounded transition-all duration-300 flex items-center relative"
           >
             {icon}
-            <Link to={link} smooth duration={500} className="ml-2">
+            <Link
+              to={link}
+              smooth
+              duration={500}
+              className="ml-2 transition-all duration-300"
+            >
               {link}
+              <span
+                className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 transition-transform duration-300 origin-left"
+              ></span>
             </Link>
           </li>
         ))}
